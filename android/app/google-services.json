@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "673031898381",
+    "project_id": "range-universe-mobile",
+    "storage_bucket": "range-universe-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673031898381:android:1a4fc627d41289dcb09c44",
+        "android_client_info": {
+          "package_name": "com.example.rangeuniverse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673031898381-ijpdki6fsfjp08kgih4t0b4rrohvotqo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rangeuniverse",
+            "certificate_hash": "ae6c94eea39f09ee9580023d9459809e61431643"
+          }
+        },
+        {
+          "client_id": "673031898381-ushpcnqjf8nfpfu0k8qr8ora34jkqvq1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj-HhkqTGReJ1zOcdRkDSgOcfEHaIGQgA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673031898381-ushpcnqjf8nfpfu0k8qr8ora34jkqvq1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
