@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:rangeuniverse/screens/home_screen.dart';
+import 'package:rangeuniverse/screens/welcome_screen.dart';
 
 class AuthService {
   // Google Sign In
@@ -28,6 +29,20 @@ class AuthService {
       }
     } catch (error) {
       print('Error signing in with Google: $error');
+    }
+  }
+
+  // Sign out with Google
+  Future<void> signOutWithGoogle(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      await GoogleSignIn().signOut();
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const WelcomeScreen()),
+      );
+    } catch (error) {
+      print('Error signing out with Google: $error');
     }
   }
 
