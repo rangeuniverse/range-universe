@@ -32,10 +32,11 @@ class AuthModal extends StatelessWidget {
                           states.contains(MaterialState.selected)) {
                         return const Color(0xFFDEEFFF);
                       }
-                      return Colors.white;
+                      return const Color(0xFFFFFFFF);
                     },
                   ),
-                  shadowColor: MaterialStateProperty.all<Color>(Colors.white),
+                  shadowColor:
+                      MaterialStateProperty.all<Color>(const Color(0xFFFFFFFF)),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

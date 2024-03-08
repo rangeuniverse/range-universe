@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rangeuniverse/screens/game_screen.dart';
-import 'package:rangeuniverse/screens/wallet_screen.dart';
+// import 'package:rangeuniverse/screens/wallet_screen.dart';
 import 'package:rangeuniverse/services/auth_service.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: null,
+      backgroundColor: const Color(0xFFFFFFFF),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -63,57 +64,57 @@ class HomeScreen extends StatelessWidget {
                 child: const Text(
                   'Play Now',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: const Color(0xFFFFFFFF),
                     fontFamily: 'Archivo',
                   ),
                 ),
               ),
             ),
+            // const SizedBox(height: 20),
+            // SizedBox(
+            //   width: 250,
+            //   height: 50,
+            //   child: ElevatedButton(
+            //     onPressed: () {
+            //       Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) => WalletScreen(),
+            //         ),
+            //       );
+            //     },
+            //     style: ElevatedButton.styleFrom(
+            //       backgroundColor: const Color(0xFFFFFFFF),
+            //     ),
+            //     child: Row(
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       children: [
+            //         Image.asset(
+            //           'assets/images/wallet.png',
+            //           width: 24,
+            //           height: 24,
+            //         ),
+            //         const SizedBox(width: 8),
+            //         const Text(
+            //           'Google Wallet',
+            //           style: TextStyle(
+            //             color: Colors.black,
+            //             fontFamily: 'Archivo',
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             const SizedBox(height: 20),
             SizedBox(
               width: 250,
               height: 50,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => WalletScreen(),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/wallet.png',
-                      width: 24,
-                      height: 24,
-                    ),
-                    const SizedBox(width: 8),
-                    const Text(
-                      'Google Wallet',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'Archivo',
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: 300,
-              height: 50,
-              child: ElevatedButton(
                 onPressed: () => AuthService().signOutWithGoogle(context),
                 style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  shadowColor: Colors.white,
+                  backgroundColor: const Color(0xFFFFFFFF),
+                  shadowColor: const Color(0xFFFFFFFF),
                   // side: const BorderSide(color: Colors.black12),
                 ),
                 child: Row(

@@ -21,6 +21,7 @@ class WalletScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: null,
+      backgroundColor: const Color(0xFFFFFFFF),
       body: FutureBuilder<bool>(
         future: flutterGoogleWalletPlugin.getWalletApiAvailabilityStatus(),
         builder: (BuildContext context, AsyncSnapshot<bool> available) {

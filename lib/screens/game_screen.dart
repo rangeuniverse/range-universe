@@ -35,8 +35,9 @@ class _GameScreenState extends State<GameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: null,
+      backgroundColor: const Color(0xFFFFFFFF),
       body: Container(
-        color: Colors.white,
+        color: const Color(0xFFFFFFFF),
         child: Stack(
           children: [
             Positioned(
