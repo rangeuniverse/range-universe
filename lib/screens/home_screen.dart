@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rangeuniverse/screens/game_screen.dart';
-import 'package:rangeuniverse/services/auth_services.dart';
+import 'package:rangeuniverse/screens/wallet_screen.dart';
+import 'package:rangeuniverse/services/auth_service.dart';
 
 class HomeScreen extends StatelessWidget {
   final AuthService authService = AuthService();
@@ -32,8 +33,9 @@ class HomeScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 20),
                         Text(
-                          'Welcome, ${snapshot.data?.displayName ?? "User"}!',
-                          style: const TextStyle(fontSize: 20),
+                          'Hi, ${snapshot.data?.displayName ?? "User"}!',
+                          style: const TextStyle(
+                              fontSize: 20, fontFamily: "Archivo"),
                         ),
                       ],
                     );
@@ -43,7 +45,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             SizedBox(
-              width: 250,
+              width: 200,
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
@@ -69,6 +71,42 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             SizedBox(
+              width: 250,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WalletScreen(),
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/wallet.png',
+                      width: 24,
+                      height: 24,
+                    ),
+                    const SizedBox(width: 8),
+                    const Text(
+                      'Google Wallet',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Archivo',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            SizedBox(
               width: 300,
               height: 50,
               child: ElevatedButton(
@@ -76,7 +114,7 @@ class HomeScreen extends StatelessWidget {
                 style: OutlinedButton.styleFrom(
                   backgroundColor: Colors.white,
                   shadowColor: Colors.white,
-                  side: const BorderSide(color: Colors.black12),
+                  // side: const BorderSide(color: Colors.black12),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

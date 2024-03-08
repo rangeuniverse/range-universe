@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rangeuniverse/services/auth_services.dart';
+import 'package:rangeuniverse/services/auth_service.dart';
 
-class AuthenticationModal extends StatelessWidget {
-  const AuthenticationModal({super.key});
+class AuthModal extends StatelessWidget {
+  const AuthModal({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -18,14 +19,23 @@ class AuthenticationModal extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             SizedBox(
-              width: 300,
-              height: 45,
+              width: 250,
+              height: 50,
               child: ElevatedButton(
                 onPressed: () => AuthService().signInWithGoogle(context),
-                style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  shadowColor: Colors.white,
-                  side: const BorderSide(color: Colors.black12),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.pressed) ||
+                          states.contains(MaterialState.hovered) ||
+                          states.contains(MaterialState.focused) ||
+                          states.contains(MaterialState.selected)) {
+                        return const Color(0xFFDEEFFF);
+                      }
+                      return Colors.white;
+                    },
+                  ),
+                  shadowColor: MaterialStateProperty.all<Color>(Colors.white),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -46,7 +56,7 @@ class AuthenticationModal extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

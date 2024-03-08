@@ -7,7 +7,7 @@ import 'package:rangeuniverse/utils/quizs.dart';
 class GameScreen extends StatefulWidget {
   final bool gameStarted;
 
-  const GameScreen({Key? key, required this.gameStarted}) : super(key: key);
+  const GameScreen({super.key, required this.gameStarted});
 
   @override
   _GameScreenState createState() => _GameScreenState();
@@ -35,67 +35,102 @@ class _GameScreenState extends State<GameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: null,
-      body: Padding(
-        padding: const EdgeInsets.all(20.0), // Add padding
-        child: Container(
-          color: Colors.white, // Set background color to white
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Question ${questionIndex + 1}: ${QuizUtils.questions[questionIndex]}',
-                  textAlign: TextAlign.center,
+      body: Container(
+        color: Colors.white,
+        child: Stack(
+          children: [
+            Positioned(
+              top: 50, // Adjust top position
+              left: 0,
+              right: 0,
+              child: Center(
+                child: Text(
+                  score.toString(),
                   style: const TextStyle(
-                    fontSize: 20,
+                    fontSize: 50,
                     fontFamily: "Archivo",
                   ),
                 ),
-                const SizedBox(height: 20),
-                ...List.generate(
-                  QuizUtils.choices[questionIndex].length,
-                  (index) => SizedBox(
-                    width: 300,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 2.0),
-                      child: ElevatedButton(
-                        onPressed: () => checkAnswer(index),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF2563EB),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50),
+              ),
+            ),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Text(
+                      QuizUtils.questions[questionIndex],
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontFamily: "Archivo",
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  ...List.generate(
+                    QuizUtils.choices[questionIndex].length,
+                    (index) => SizedBox(
+                      width: 300,
+                      height: 50,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 2.0),
+                        child: ElevatedButton(
+                          onPressed: () => checkAnswer(index),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFF2563EB),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
                           ),
-                        ),
-                        child: Text(
-                          QuizUtils.choices[questionIndex][index],
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontFamily: "Archivo",
+                          child: Text(
+                            QuizUtils.choices[questionIndex][index],
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontFamily: "Archivo",
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  'Time left: $_timeLeft seconds',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontFamily: "Archivo",
+                  const SizedBox(height: 20),
+                  Text(
+                    'Time left: $_timeLeft seconds',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontFamily: "Archivo",
+                    ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  'Score: $score',
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontFamily: "Archivo",
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
+            Positioned(
+              bottom: 20,
+              left: 0,
+              right: 0,
+              child: Container(
+                width: 40, // Set width
+                height: 40, // Set height
+                decoration: const BoxDecoration(
+                  color: Color(0xFF2563EB), // Set background color
+                  shape: BoxShape.circle, // Make it round
+                ),
+                child: Center(
+                  child: Text(
+                    '${questionIndex + 1}',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontFamily: "Archivo",
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -105,7 +140,7 @@ class _GameScreenState extends State<GameScreen> {
     _timer.cancel(); // Cancel the timer when the user answers
     if (selectedIndex == correctAnswers[questionIndex]) {
       setState(() {
-        score += 1000;
+        score += 100;
         if (questionIndex == QuizUtils.questions.length - 1) {
           // User answered all questions correctly
           showCongratulatoryModal();
@@ -120,13 +155,16 @@ class _GameScreenState extends State<GameScreen> {
       showDialog(
         context: context,
         builder: (_) => AlertDialog(
+          backgroundColor: const Color(0xFFDEEFFF), // Set background color
           title: const Text(
             'Game Over',
             style: TextStyle(fontFamily: "Archivo"),
           ),
           content: Text(
             'Your final score: $score',
-            style: const TextStyle(fontFamily: "Archivo"),
+            style: const TextStyle(
+              fontFamily: "Archivo",
+            ),
           ),
           actions: [
             TextButton(
@@ -136,7 +174,10 @@ class _GameScreenState extends State<GameScreen> {
               },
               child: const Text(
                 'Play Again',
-                style: TextStyle(fontFamily: "Archivo"),
+                style: TextStyle(
+                  fontFamily: "Archivo",
+                  color: Color(0xFF2563EB),
+                ),
               ),
             ),
           ],
@@ -147,15 +188,19 @@ class _GameScreenState extends State<GameScreen> {
 
   void showCongratulatoryModal() {
     showDialog(
+      barrierDismissible: false, // Prevent dismissing by tapping outside
       context: context,
       builder: (_) => AlertDialog(
+        backgroundColor: const Color(0xFFDEEFFF), // Set background color
         title: const Text(
           'Congratulations!',
           style: TextStyle(fontFamily: "Archivo"),
         ),
         content: Text(
           'You won the game with a score of $score',
-          style: const TextStyle(fontFamily: "Archivo"),
+          style: const TextStyle(
+            fontFamily: "Archivo",
+          ),
         ),
         actions: [
           TextButton(
@@ -165,7 +210,10 @@ class _GameScreenState extends State<GameScreen> {
             },
             child: const Text(
               'Play Again',
-              style: TextStyle(fontFamily: "Archivo"),
+              style: TextStyle(
+                fontFamily: "Archivo",
+                color: Color(0xFF2563EB),
+              ),
             ),
           ),
         ],
@@ -189,8 +237,10 @@ class _GameScreenState extends State<GameScreen> {
 
   void showGameOverModal() {
     showDialog(
+      barrierDismissible: false, // Prevent dismissing by tapping outside
       context: context,
       builder: (_) => AlertDialog(
+        backgroundColor: const Color(0xFFDEEFFF), // Set background color
         title: const Text(
           'Game Over',
           style: TextStyle(fontFamily: "Archivo"),
@@ -207,7 +257,10 @@ class _GameScreenState extends State<GameScreen> {
             },
             child: const Text(
               'Play Again',
-              style: TextStyle(fontFamily: "Archivo"),
+              style: TextStyle(
+                fontFamily: "Archivo",
+                color: Color(0xFF2563EB),
+              ),
             ),
           ),
         ],

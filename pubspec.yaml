@@ -17,6 +17,7 @@ dependencies:
   firebase_auth: ^4.16.0
   firebase_core: ^2.24.2
   url_launcher: ^6.2.5
+  flutter_google_wallet: ^0.1.4
 
 dev_dependencies:
   flutter_test:
@@ -32,6 +33,9 @@ flutter:
     - assets/images/brand.png
     - assets/images/globalization.jpg
     - assets/images/google.png
+    - assets/images/wallet.png
+    - packages/flutter_google_wallet/assets/svg/button/frFR_add_to_google_wallet_wallet-button.svg
+    - packages/flutter_google_wallet/assets/svg/button/enUS_add_to_google_wallet_wallet-button.svg
 
   fonts:
     - family: Archivo

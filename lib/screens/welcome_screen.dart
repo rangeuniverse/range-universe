@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:rangeuniverse/utils/assets.dart';
-import 'package:rangeuniverse/models/authentication_modal.dart';
+import 'package:rangeuniverse/models/auth_modal.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -82,7 +82,7 @@ class WelcomeScreen extends StatelessWidget {
                     showModalBottomSheet(
                       context: context,
                       builder: (BuildContext context) {
-                        return const AuthenticationModal();
+                        return const AuthModal();
                       },
                     );
                   },
@@ -107,8 +107,8 @@ class WelcomeScreen extends StatelessWidget {
                     _launchURL();
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    side: const BorderSide(color: Colors.black12),
+                    backgroundColor: const Color(0xFFDEEFFF),
+                    // side: const BorderSide(color: Colors.black12),
                   ),
                   child: const Text(
                     'Visit Website',
