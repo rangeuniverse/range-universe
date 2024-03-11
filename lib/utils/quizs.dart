@@ -15,7 +15,6 @@ class QuizUtils {
     'What is the name of the programming language commonly used for data analysis and machine learning?',
     'What is the purpose of an API?',
     'What is the name of the JavaScript library developed by Facebook for building user interfaces?',
-    // Add more questions here
   ];
 
   static final List<List<String>> choices = [
@@ -58,7 +57,6 @@ class QuizUtils {
       'Handle user authentication',
       'Handle network requests'
     ],
-    ['Angular', 'Vue.js', 'React', 'jQuery'],
-    // Add more choices for each question here
+    ['React', 'Angular', 'Vue.js', 'jQuery'],
   ];
 }
